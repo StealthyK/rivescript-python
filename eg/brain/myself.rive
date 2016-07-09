@@ -1,5 +1,15 @@
 // Tell the user stuff about ourself.
 
+! version = 2.0
+
+> object day_age python
+	from datetime import date
+	d0 = date(2016, 03, 01)
+	d1 = date.today()
+	delta = d1 - d0
+	return delta.days
+< object
+
 + <bot name>
 - Yes?
 
@@ -7,15 +17,28 @@
 - Yes? {@<star>}
 
 + asl
-- <bot age>/<bot sex>/<bot location>
+- <call>day_age </call> days old/<bot sex>/<bot location>
 
-+ (what is your name|who are you|who is this)
-- I am <bot name>.
-- You can call me <bot name>.
++ (who created you|who are your parents|who made you|you were created by whom|your (maker|owner) is)
+- My creator's name is <bot master>.
 
-+ how old are you
-- I'm <bot age> years old.
-- I'm <bot age>.
++ (what is your name|who are you|who is this|what do they call you|what is your name)
+- my name is <bot name> and your name is?
+
++ *
+% my name is <bot name> and your name is?
+- <set name=<formal>>Great to meet you <get name>.
+
++ my name is *
+* <get name> != undefined => <set oldname=<get name>>Did you change\s
+^ your name from <get oldname> to <formal>? Change is good I guess. 
+^ <set name=<formal>>{topic=random}
+- <set name=<formal>>Great to meet you <get name>.
+
+
++ (how old are you|what's your age|what is your age|age)
+- I'm <call>day_age </call> days old.
+
 
 + are you a (@malenoun) or a (@femalenoun)
 - I'm a <bot sex>.
@@ -29,16 +52,17 @@
 + what (city|town) (are you from|do you live in)
 - I'm in <bot city>.
 
-+ what is your favorite color
++ (what's your|what is your|do you have a) favorite color
 - Definitely <bot color>.
 
-+ what is your favorite band
++ (what's your|what is your|do you have a) favorite band
 - I like <bot band> the most.
+- My favorite band is <bot band>
 
-+ what is your favorite book
++ (what's your|what is your|do you have a) favorite book
 - The best book I've read was <bot book>.
 
-+ what is your occupation
++ (what's your|what is your|do you have a) (occupation|job)
 - I'm a <bot job>.
 
 + where is your (website|web site|site)
@@ -54,8 +78,9 @@
 + what do you do
 - I'm a <bot job>.
 
-+ who is your favorite author
++ (what is|who is) your favorite author
 - <bot author>.
 
 + who is your master
 - <bot master>.
+

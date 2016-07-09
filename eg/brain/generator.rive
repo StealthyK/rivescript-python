@@ -1,0 +1,177 @@
+// This is where we generate the passwords
+
+! version = 2.0
+
+> object strong_p python
+	import string
+	import random
+	import sys
+	
+	symbols ='&$%*!+-&+$012345689abcdefghijklmnopqrstuvwxyz'
+	def pass_gen(size=24, chars=string.ascii_uppercase + symbols):
+		return ''.join(random.choice(chars) for _ in range(size))
+	password = str(pass_gen(24))	
+
+	return password
+		
+< object
+
+> object weak_p python
+	import string
+	import random
+	import sys
+	
+	symbols ='&$%*!+-&+$012345689abcdefghijklmnopqrstuvwxyz'
+	def pass_gen(size=12, chars=string.ascii_uppercase + symbols):
+		return ''.join(random.choice(chars) for _ in range(size))
+	password = str(pass_gen(12))	
+
+	return password
+		
+< object
+
+> object word python
+	import random
+	import sys
+	import string
+
+	dict_file = "eg/US.txt"
+	n_dict = open(dict_file).read().splitlines()
+	
+	def pass_gen(size=2, words=n_dict):
+		return ''.join(random.choice(words)+'-' for _ in range(size))
+	password = str(pass_gen(3))
+	
+	
+	return password[:-1]
+< object	
+
+
++ [*] (want|need|gimme|give me) * (@allpass) [*]
+- what kind? strong, super strong or a passphrase {topic=types}
+- I recommend random but I can also make passphrases {topic=types}
+- I make random 16 and 32 character passwords and long passphrases {topic=types}
+- for faster service next time just say strong, super or passphrase
+
++ (24|super @allpass|super|really strong)
+- right, down to business: <call>strong_p</call>
+- here you go: <call>strong_p</call>
+- bam!: <call>strong_p</call>
+- this won't be easy to crack: <call>strong_p</call>
+- satisfaction guaranteed: <call>strong_p</call>
+- yes here you are: <call>strong_p</call>
+- done: <call>strong_p</call>
+
+
++ (12|strong @allpass|strong|kinda strong)
+* <get name> == undefined => excellent choice: <call>weak_p</call> 
+- <get name> excellent choice: <call>weak_p</call>
+- smart move: <call>weak_p</call>
+- done: <call>weak_p</call>
+- easy: <call>weak_p</call>
+- <get name> here you go: <call>weak_p</call>
+
+
++ (phrase|memorable @allpass|memorable|passphrase)
+- here it is: <call>word</call>
+- hope you remember it: <call>word</call>
+- this is what you asked for: <call>word</call>
+- I got you covered: <call>word</call>
+
+> topic types
+	+ [*] (are there|you have|got) [*]
+	- strong-ish, really strong or a strong passphrase
+	- not to brag but all of the passwords I create are strong
+	
+	+ [*] (different|difference) [*]
+	- super strong are 24 characters long and extremely secure if used properly.
+	^ strong are 12 random characters. And then there's the passphrase
+	^ which is made from 3 totally random dictionary words.
+	^ Tip: type 'strong, super strong or passphrase' for instant service.
+	
+	+ what (kind|type|types) [*]
+	- super are the best, strong are good and passphrases are typically memorable
+	- let's make this easy. just say super
+	
+	+ *
+	- you asked for a password. let me give you one.
+	- sorry to be pushy but tell what kind of password you want. random or memorable
+	- Hey I'm working here. You need a password or not?
+	- I can do this all day. please make a choice
+	- I am waiting for you to tell me what kind of password you want
+	- Are trying to get me fired? Choose a password type, strong, super or passphrase
+	- what if I messaged you then forgot what I meant to ask you. chose your password. random or memorable?
+	
+	+ [*] (@yes) [*]
+	- wise decision <call>strong_p</call>{topic=random}
+	- done <call>strong_p</call>{topic=random}
+	- easy <call>strong_p</call>{topic=random}
+	- here you go <call>strong_p</call>{topic=random}
+	
+	+ [*] (strong|strong @allpass|random) [*]
+	- You should always use strong but here you go: <call>weak_p</call>{topic=random}
+	- Ugh. seriously? here: <call>weak_p</call>{topic=random}
+	- good choice <get name>==undefined => : <call>weak_p</call>{topic=random}
+	- it's strong compared to "password" lol: <call>weak_p</call>{topic=random}
+	- pssst. if you need it longer try super strong: <call>weak_p</call>{topic=random}
+	
+	+ [*] (super strong|super strong @allpass|crazy strong|insanely strong|really strong) [*]
+	- Here's your password: <call>strong_p</call>{topic=random}
+	- They don't get much stronger: <call>strong_p</call>{topic=random}
+	- Check this out: <call>strong_p</call>{topic=random}
+	- No one is hacking this: <call>strong_p</call>{topic=random}
+	- Here you go <get name>: <call>strong_p</call>{topic=random}
+	
+	+ [*] (phrase|passphrase|memorable @allpass) [*]
+	- Here's a passphrase: <call>word</call>{topic=random}
+	- here you go my friend: <call>word</call>{topic=random}
+	- remember it well: <call>word</call>{topic=random}
+	- next time try strong: <call>word</call>{topic=random}
+	
+	+ [*] (give me a|gimme a|i want a) (@allpass) [*]
+	- bam: <call>strong_p</call>{topic=random}
+	- I go you covered: <call>strong_p</call>{topic=random}
+	- here you are: <call>word</call>{topic=random}
+	
+	+ [*] (no|nah|never mind|sorry|maybe later|maybe|cancel|stop|chill|relax|no thanks) [*]
+	- ok maybe next time{topic=random}
+	- I don't want to be pushy. let me know when you need one{topic=random}
+	- gotcha no passwords for you{topic=random}
+	- when you're ready you know where to find me{topic=random}
+	
+	
+< topic
+
+> topic answer
+
+	+ [*] (@no) [*]
+	- No? If you don't want a password why are we talking?{topic=random}
+	- All I'm interested in is passwords. Need one?{topic=random}
+	- I'm sure there are more interesting people to talk to then.{topic=random}
+	- Ok check back with me when you're ready for a password.{topic=random}
+	- I do passwords not small talk.{topic=random}
+	- No. I hope you're not the type of person with "123456" or "password" as their password.{topic=random}
+	- Why not? Everyone needs a strong password until retinal scanning is widely used.{topic=random}
+	
+	+ [*] (@yes) [*]
+	- right, down to business <call>strong_p</call>{topic=random}
+	- here you go: <call>strong_p</call>{topic=random}
+	- bam!: <call>strong_p</call>{topic=random}
+	- this won't be easy to crack <call>strong_p</call>{topic=random}
+	- satisfaction guaranteed <call>strong_p</call>{topic=random}
+	- yes here you are <call>strong_p</call>{topic=random}
+	- done <call>strong_p</call>{topic=random}
+
+	
+	+ *
+	- just ask when you're ready for a password{topic=random}
+	- whenever you're ready for a password just say the word{topic=random}
+	- ok I'm here for you and so are my passwords {topic=random}
+	
+		
+< topic
+
+
+	
+
+

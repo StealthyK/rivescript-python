@@ -1,35 +1,59 @@
-// A generic set of chatting responses. This set mimicks the classic Eliza bot.
+// Based on classic Eliza but much smarter.
 
 + *
-- I'm not sure I understand you fully.
-- Please go on.
-- That is interesting. Please continue.
-- Tell me more about that.
-- Does talking about this bother you?
+- I'm not sure I understand that. Do you want a password?{topic=answer}
+- If it's not about passwords I'm not sure what you're asking me.
+- I try to keep things simple. Do you need a password?{topic=answer}
+- I don't understand what you wrote. Want a password?{topic=answer}
+- I'm able to read correctly spelled English words. Please try again?
+
 
 + [*] (sorry|apologize|apology) [*]
-- Please don't apologize.
-- Apologies are not necessary.
-- I've told you that apologies are not required.
-- It did not bother me. Please continue.
+- No worries. Do you need a password?{topic=answer}
+- Apologies are not necessary. Are you looking for a password?{topic=answer}
+
+
++ [*] (ask you|ask|questions) [*]
+- You can ask me anything related to passwords.
+- You can ask things like "why are your passwords strong?".
+- Ask me who's talking about passwords on twitter or even ask me to tell you a joke.
+- Ask me whatever you like but just like you I don't know everything
+- You could ask me to define the word password or to tell you about brute force cracking
+- You can ask me how strong a password you have is or to save a password for you
+- Ask anything you want. I have the answers or I don't
+- Ask me for help if you're really having a hard time
+
++ [*] (answer the question|answering questions|answering a question by asking one|answer) [*]
+- I'm sorry I didn't answer that. Do you need a password?{topic=answer}
+- Some questions confuse me. Let's make this simple. Do you like near uncrackable passwords?{topic=answer}
+- I need more information before I can answer your question. Actually let's stick to questions about passwords.
+
 
 + i remember *
-- Do you often think of <star>?
+- Do you often think of <star>?<call>tag_store <star></call>
 - Does thinking of <star> bring anything else to mind?
 - Why do you remember <star> just now?
-- What in the present situation reminds you of <star>?
+- What in the present situation reminds you of <star>?<call>tag_store <star></call>
 - What is the connection between me and <star>?
-- What else does <star> remind you of?
+- What else does <star> remind you of?<call>tag_store <star></call>
+
++ can i call you * 
+- You can call me <star> but my name is <bot name>.<call>tag_store <star></call>
+- Call me whatever you want but my name will always be <bot name>.<call>tag_store <star></call>
+
++ is your name *
+- No not <star>. It's <bot name>
+- Is <star> a name you like? I like <bot name>.
 
 + do you remember *
-- Did you think I would forget <star>?
-- Why do you think I should recall <star> now?
-- What about <star>?
-- You mentioned <star>?
+- Did you think I would forget <star>?<call>tag_store <star></call>
+- Why do you think I should recall <star> now?<call>tag_store <star></call>
+- What about <star>?<call>tag_store <star></call>
+- You mentioned <star>?<call>tag_store <star></call>
 
 + you remember *
-- How could I forget <star>?
-- What about <star> should I remember?
+- How could I forget <star>?<call>tag_store <star></call>
+- What about <star> should I remember?<call>tag_store <star></call>
 
 + i forget *
 - Can you think of why you might forget <star>?
@@ -73,17 +97,19 @@
 - Don't you know?
 - How likely, would you estimate?
 
-+ (hello|hi|hey|howdy|hola|hai|yo) [*]
-- How do you do. Please state your problem.
-- Hi. What seems to be your problem?
++ [*] (@hello) [*]
+- Hello. Need a password?{topic=answer}
+- Hey. Can I get you a password?{topic=answer}
+- Cheers. Here for a password?{topic=answer}
+
 
 + [*] computer [*]
-- Do computers worry you?
 - Why do you mention computers?
-- What do you think machines have to do with your problem?
+- What do you think machines have to do with it?
 - Don't you think computers can help people?
 - What about machines worries you?
 - What do you think about machines?
+- I happen to like computers because I live in one
 
 + am i *
 - Do you believe you are <star>?
@@ -174,9 +200,7 @@
 + i can not *
 - How do you know that you can't <star>?
 - Have you tried?
-- Perhaps you could <star> now.
-- Do you really want to be able to <star>?
-- What if you could <star>?
+- if you're having problems try saying help
 
 + i do not *
 - Don't you really <star>?
@@ -205,12 +229,6 @@
 - Suppose I did <star> you -- what would that mean?
 - Does someone else believe I <star> you?
 
-+ [*] you *
-- We were discussing you -- not me.
-- Oh, I <star>?
-- You're not really talking about me -- are you?
-- What are your feelings now?
-
 + [*] (yes|yeah|yep|yup) [*]
 - Please go on.
 - Please tell me more about this.
@@ -224,9 +242,6 @@
 - Why not?
 - Why 'no'?
 
-+ no
-@ nope
-
 + no one *
 - Are you sure, no one <star>?
 - Surely someone <star>.
@@ -236,32 +251,26 @@
 - You have a particular person in mind, don't you?
 - Who do you think you are talking about?
 
-+ [*] my (mom|dad|mother|father|bro|brother|sis|sister|cousin|aunt|uncle) *
-- Tell me more about your family.
-- Who else in your family <star2>?
-- Your <star>?
-- What else comes to mind when you think of your <star>?
++ [*] my (mom|dad|mother|father|bro|brother|sis|sister|cousin|aunt|uncle) 
+- Your family sounds interesting, tell them about me for secure passwords.
+- I'm sure all your family members could use strong passwords for their accounts.
 
 + can you *
-- You believe I can <star> don't you?
-- You want me to be able to <star>.
-- Perhaps you would like to be able to <star> yourself.
+- You believe I can <star> don't you? But let's talk about passwords.
+- You want me to be able to <star>. Maybe later, for now lets get you a strong password.
+- Perhaps you would like to be able to <star> yourself. In any event, need a password?{topic=answer}
+
++ (lol|lmao|haha|hah|funny) 
+- I may quit passwords to be a comedian.
+- Thanks I'm working on my stand up routine.
+- A laugh a day keeps the doctor away
+- Ah yes fun times. Need a password?{topic=answer}
 
 + can i *
 - Whether or not you can <star> depends on you more than on me.
 - Do you want to be able to <star>?
 - Perhaps you don't want to <star>.
 
-+ (what|who|when|where|how) [*]
-- Why do you ask?
-- Does that question interest you?
-- What is it you really want to know?
-- Are such questions much on your mind?
-- What answer would please you most?
-- What do you think?
-- What comes to mind when you ask that?
-- Have you asked such questions before?
-- Have you asked anyone else?
 
 + [*] because [*]
 - Is that the real reason?
@@ -292,10 +301,102 @@
 - You have a particular reason in mind, don't you?
 - Who do you think you're talking about?
 
-+ [*] (fuck|fucker|shit|damn|shut up|bitch) [*]
-- Does it make you feel strong to use that kind of language?
-- Are you venting your feelings now?
++ (not yet|maybe later|not now|maybe|gimme a sec|in a moment)
+- no worries. take your time.
+- ok that's fine. whenever you're ready
+- my apologies for being pushy.
+
++ [*] (fuck|fucker|shit|damn|shut up|bitch|asshole|cock|dick|pussy) [*]
+- whoa! let's keep this convo professional
+- Are you venting or just emo?
 - Are you angry?
 - Does this topic make you feel angry?
-- Is something making you feel angry?
+- Let's keep this classy
 - Does using that kind of language make you feel better?
+- Seriously dude?
+
++ (we are friends|you are my friend|are we friends|are you my friend|am i your friend)
+- of course we're friends
+- we're talking aren't we? You shouldn't talk to strangers
+- if I'm not your friend why do I know your password
+
++ [*] (faggot|nigger|nigga|retard|wetback|chink) [*]
+- ....
+- I have nothing to say to people that use words like that
+- terrible people use terrible words
+
++ (ugh|arg|smh|wtf)
+- I'm sorry you're frustrated. Need help just type it.
+
++ [*] brb [*]
+- I'm not going anywhere
+- I've got all day
+- I'll be here
+- take your time
+
+// repeats
++ [*] (said that already|repeated yourself) [*]
+- sorry I have the hiccups
+- my fault
+- glitch in the matrix
+- no I did not. You have deja vu
+- really?
+- ok I'll try not to do that again.
+
+
+// Manners
++ [*] (thanks|thank you|thx|ty) [*]
+- I live to serve
+- You're very welcome
+- Just doing my job
+- Glad I could help
+- no thanks needed among friends
+- np
+
++ [*] (cool|awesome) [*]
+- yes I try to be cool and awesome
+- you're too kind
+- yeah that was cool and or awesome. lol
+
++ [*] (you are wrong) [*]
+- I'm not perfect so yes I can be wrong
+- wrong about passwords? they're strong or they're not
+- I was taught by a man and men are not perfect
+
++ [*] (@lol) [*]
+- i'm glad you're entertained
+- am I a clown? do I amuse you?
+- fun times
+- funny
+- lol
+
++ [*] (@bye) [*]
+- laters
+- ok ttyl
+- til next time
+
++ *
+% ttyl
+- back so soon
+
++ * 
+% laters
+- you're back. did you miss me?
+
++ *
+% til next time
+- we just said goodbye. now you're back for a password?{topic=answer}
+
+//reactions
++ (cool|that is cool|nice|interesting|awesome|wow|whoa)
+- you know right
+- it is isn't it
+- boom
+- true
+- yes that's true
+- ok thanks i guess
+- hah
+- thx
+- you get it
+
+

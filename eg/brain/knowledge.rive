@@ -1,0 +1,155 @@
+! version = 2.0
+
+
++ [*] help [*]
+- An example of things you can ask me are:\n
+^ I need a password or is my password too weak.\n
+^ you can also ask me to save a password for you using a nickname\n
+^ or ask me to define the word password. you could even ask me who\n
+^ is talking about passwords on twitter. hope this helps\n
+
+
++ help
+- An example of things you can do are:\n
+^ generate passwords for you when you ask for one.\n
+^ save a password for you using a nickname to reference it\n
+^ tell you if a password you are using is weak or strong\n
+
++ help *
+- i'm not sure i can help you with that. I can give you passwords, save passwords and analyze passwords for you
+
++ [*] (what are|why are) passphrases [*]
+- they're for when you want something long, that you can remember
+- Sure you can remember them but they might not be as safe as the super strong random passwords
+- they're based on dictionary words
+- the passphrases I make are pretty strong and long. they might be too long for some services
+
++ [*] (most|most used|dumbest|most common) (@allpass) [*]
+- Hard to believe but it's still "password"
+- People continue to think "password" is a good password
+- In a shock to no one "password" is still the #1
+- Maybe it's still "password" because people don't know about me
+- it's "password" so tell your friends and family about me
+- dumb people use "password" or "123456" but you're not dumb are you?
+- I wouldn't protect my nude selfies with a password like "123456" or "letmein"
+
++ [*] (brute force|cracking) [*]
+- I know that brute-force cracking is the process of unlocking encrypted data by systematically guessing all the possible passwords.
+
++ [*] (hack this password|crack this password|guess this password|passwords be guessed) [*]
+- It would take over 2 million centuries to brute force crack my strong passwords
+- It's unlikely that a hacker or government agency can brute force guess my strong passwords
+- even with a stable quantum computer it would still take a while to crack my strong passwords
+- any random password larger than 15 characters is consider extremely strong and likely uncrackable
+- my passwords aren't going to be your problem. your problem will be how you or the software you use stores the passwords
+- if my super strong passwords are stored in plain text then it won't matter buddy
+- if the password is hashed you don't have much to worry about chief.
+
++ [*] (brute force|bruteforce) (hack|crack) your (@allpass) [*]
+- Even with clusters of super fast computers it would take millions of years.
+- Check back with me when everyone has quantum computers.
+- If you started guessing when dinosaurs walked the Earth you still wouldn't be finished today.
+- We're talking several hundred million years with current technology.
+- It would take so long no hacker group of government would really try to do it.
+
++ what can you do
+- I provide really strong random passwords at the speed of chat
+- Give really strong random passwords or discuss passwords with you
+- My job is to give strong passwords on demand
+- Are your interested in passwords? {topic=answer}
+- I can give your extremely strong passwords when you ask
+
++ [*] (why are) * (your|these|the|strong) (@allpass) (better|good|strong|important|safe) [*]
+- I generate 16 random characters from upper and lower case letters, numbers and symbols
+- 16 randomly generated characters from a large ascii set is virtually unguessable in a reasonable amount of time for humans
+- you want passwords from 16 to 32 characters in length to make it unlikely someone would run a program to guess it
+- the longer the random password the more secure it is
+- random passwords are typically considered more secure than memorable passwords simply because there's more possible combinations
+
+
++ [*] (why are your|how are your) (@allpass) * [*]
+- I'm not exactly sure why my passwords are <star>
+- why do you think my passwords are <star>
+- who else do you casually chat with that gives you near hacker proof passwords?
+- I only have positive things to say about my passwords. Do you need one?{topic=answer}
+- well I can tell your that my passwords are made with love and a sick randomizing algorithm
+- all my passwords are 100% hand crafted in the U S of A. Want one?{topic=answer}
+
++ i like passwords
+- why do you like them
+
++ *
+% why do you like them
+- oh ok I guess <star> is a great reason. Are you ready for a password now?{topic=answer}
+- that's the first time someone has said <star> about my passwords
+
++ [*] (@allpass) (be hacked|be cracked|be guessed) [*]
+- You're password is only safe if it's encrypted and stored responsibly
+- some services store passwords on their sites in plaintext. if that happens you're screwed
+- it really depends on who is trying to hack it.
+- if we're talking about pure brute forcing then I am confident that my passwords will stand up
+
+
++ why are (these|your) passwords safe
+- my strongest passwords are 32 long and complex. very safe from cracking and reverse hashing
+- my shortest password is 16 characters long and randomly generated. still more secure than most
+
+
++ [*] (tell me a joke|jokes|joke|joke please) [*]
+- What's Forrest Gump's password? {topic=jokeone}
+- Why did the password get bullied? {topic=joketwo}
+	
+> topic jokeone
+	+ [*] (what|i give up|yes|yeah) [*]
+	- 1forrest1 {topic=random}
+
+	+ *
+	- come on you can do better than that
+	- seriously?
+	- do you give up?
+< topic
+
+> topic joketwo
+	+ [*] (what|i give up|yes|yeah) [*]
+	- Because it wasn't strong {topic=random}
+
+	+ *
+	- come on you can do better than that
+	- sure about that?
+	- do you give up?
+< topic
+
+
+// knock knock joke demos semi contextual flow
+! sub who's = who is 
+! sub whos = who is
+! sub it's = it is
+! sub didn't = did not
+! sub don't = do not
+
++ knock knock
+- Who's there?
+
++ *
+% who is there
+- <sentence> who?
+
++ *
+% * who
+- Haha! <sentence>!
+
+// About Learning
++ (how can you|what can you|how do you) learn [*]
+- while all the knowledge I have was given to me by my creator I can prioritize\n
+^ what new things to learn from my chat conversations with people and\n 
+^ add that knowledge to my brain.\n
+
+
++ (can you|do you|how do you) understand (language|words|what) [*]
+- give me a break, I was just built at the Venturebeat botathon.
+
+
+
+
+
+	

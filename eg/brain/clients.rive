@@ -1,8 +1,14 @@
 // Learn stuff about our users.
+! sub i'm = i am
+
++ i am called *
+- <set name=<formal>>Nice to meet you, <get name> you're here for a password right?{topic=answer}
+- <set name=<formal>>Hey <get name> nice to meet you
+- <set name=<formal>>hello <get name> how can I help you?
 
 + my name is *
 - <set name=<formal>>Nice to meet you, <get name>.
-- <set name=<formal>><get name>, nice to meet you.
+- <set name=<formal>><get name>, pleasure to meet you.
 
 + my name is <bot master>
 - <set name=<bot master>>That's my master's name too.
@@ -16,7 +22,7 @@
 
 + i am * years old
 - <set age=<star>>A lot of people are <get age>, you're not alone.
-- <set age=<star>>Cool, I'm <bot age> myself.{weight=49}
+- <set age=<star>>Cool, I'm <call>day_age </call>days old.{weight=49}
 
 + i am a (@malenoun)
 - <set sex=male>Alright, you're a <star>.
@@ -50,12 +56,17 @@
 + my (girlfriend|boyfriend)* name is *
 - <set spouse=<formal>>That's a nice name.
 
-+ (what is my name|who am i|do you know my name|do you know who i am){weight=10}
+
+// name space here
++ (what is my name|who am i|do you know my name|do you know who i am){weight=100}
+* <get name> == undefined => You haven't told me yet
 - Your name is <get name>.
 - You told me your name is <get name>.
 - Aren't you <get name>?
 
+
 + (how old am i|do you know how old i am|do you know my age){weight=10}
+* <get age> == undefined => You haven't told me and I haven't asked.
 - You are <get age> years old.
 - You're <get age>.
 

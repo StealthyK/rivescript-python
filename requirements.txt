@@ -1,2 +1,7 @@
-nose==1.3.7
-six==1.10.0
+nose
+six
+wikipedia
+rivescript
+twitter
+unicodedata
+nltk
