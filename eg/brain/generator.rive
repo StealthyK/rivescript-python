@@ -35,7 +35,7 @@
 	import sys
 	import string
 
-	dict_file = "eg/US.txt"
+	dict_file = "/eg/US.txt"
 	n_dict = open(dict_file).read().splitlines()
 	
 	def pass_gen(size=2, words=n_dict):
@@ -53,7 +53,7 @@
 - I make random 16 and 32 character passwords and long passphrases {topic=types}
 - for faster service next time just say strong, super or passphrase
 
-+ (24|super @allpass|super|really strong)
++ [*] (24|super @allpass|super|really strong) [*]
 - right, down to business: <call>strong_p</call>
 - here you go: <call>strong_p</call>
 - bam!: <call>strong_p</call>
@@ -63,7 +63,7 @@
 - done: <call>strong_p</call>
 
 
-+ (12|strong @allpass|strong|kinda strong)
++ [*] (12|strong @allpass|strong|kinda strong) [*]
 * <get name> == undefined => excellent choice: <call>weak_p</call> 
 - <get name> excellent choice: <call>weak_p</call>
 - smart move: <call>weak_p</call>
@@ -72,7 +72,7 @@
 - <get name> here you go: <call>weak_p</call>
 
 
-+ (phrase|memorable @allpass|memorable|passphrase)
++ [*] (phrase|memorable @allpass|memorable|passphrase) [*]
 - here it is: <call>word</call>
 - hope you remember it: <call>word</call>
 - this is what you asked for: <call>word</call>
