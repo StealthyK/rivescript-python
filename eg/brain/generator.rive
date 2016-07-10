@@ -35,7 +35,7 @@
 	import sys
 	import string
 
-	dict_file = "eg/twillio/US.txt"
+	dict_file = "../US.txt"
 	n_dict = open(dict_file).read().splitlines()
 	
 	def pass_gen(size=2, words=n_dict):
