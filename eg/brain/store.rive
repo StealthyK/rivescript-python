@@ -1,14 +1,24 @@
 ! version = 2.0
 
 > object store_pw python
-	from api import save_pwd
+	import requests
+	import json
+	
+	url = "http://104.236.66.171:8080/pwd"
 	
 	a = args
 	key = a[0]
 	pwd = a[1]
 	uid = rs.current_user()
 	
-	return save_pwd(uid, key, pwd)
+  	post_data = {"usr":uid,"pwd":pwd, "key":key}
+  	headers = {'content-type': 'application/json'}
+  	post_response = requests.post(url="http://104.236.66.171:8080/pwd", data=json.dumps(post_data),headers=headers)
+  	if post_response.status_code == 201:
+    		return "Password Saved"
+  	else:
+    		return "Failed to Save Password"
+	
 	
 < object
 
