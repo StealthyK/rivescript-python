@@ -1,4 +1,3 @@
-//generic password validater -- python object -- v.0.2
 ! version = 2.0
 
 > object validate python
@@ -48,8 +47,8 @@
 
 
 + [*] (how strong is this|is this|can you test this|tell me how strong this|test this) (@allpass) [*]
-- let's see it (type or paste it)
+- show me (type or paste it)
 
 + *
-% let's see it (type or paste it)
+% show me (type or paste it)
 - <call>validate <star></call> 
