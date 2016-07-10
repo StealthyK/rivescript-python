@@ -1,26 +1,64 @@
 ! version = 2.0
 
 > object store_pw python
-	import requests
-	import json
-	
-	url = "http://104.236.66.171:8080/pwd"
+
+	import sys
+	import base64
+	import re
 	
 	a = args
-	key = a[0]
-	pwd = a[1]
-	uid = rs.current_user()
+	nn = a[0]
+	pw = a[1]
 	
-  	post_data = {"usr":uid,"pwd":pwd, "key":key}
-  	headers = {'content-type': 'application/json'}
-  	post_response = requests.post(url="http://104.236.66.171:8080/pwd", data=json.dumps(post_data),headers=headers)
-  	if post_response.status_code == 201:
-    		return "Password Saved"
-  	else:
-    		return "Failed to Save Password"
+	tf = open('vapor/store.txt', 'r')
+	ft = tf.read()
+	tf.close()
 	
+	nn_used = "sorry that nickname has been used already"
+	saved = "saved nickname " + nn + " and password " + pw + " are you done?"
+	
+	if re.search(nn,ft):
+		return nn_used
+	else:
+		secure_pw = pw.encode('base64','strict')
+		store = nn + secure_pw
+	
+		orig_stdout = sys.stdout
+		f = file('vapor/store.txt', 'a')
+		sys.stdout = f
+		output = store
+		f.write(str(output)+ "\n")
+		sys.stdout = orig_stdout
+		f.close()
+		return saved
+
+< object
+
+> object get_pw python
+	
+	import re
+	import sys
+	import base64
+	
+	no_match = "sorry that nickname doesn't match any passwords I have saved"
+	
+	a = args
+	aa = a[0]
+	raw = re.compile(r"%s(.*)" % aa)
+	
+	tf = open('eg/brain/store.txt', 'r')
+	ft = tf.read()
+	tf.close()
+	
+	if re.search(raw,ft):
+		pw = re.search(raw,ft).group(1)
+		return pw.decode('base64','strict')
+	else:
+		return no_match
+        
 	
 < object
+
 
 	
 + * and *
